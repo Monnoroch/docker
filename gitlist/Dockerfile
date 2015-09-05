@@ -3,6 +3,8 @@ COPY apache.conf /tmp/
 RUN \
 	apt-get update && \
 	apt-get install -y wget apache2 php5-common libapache2-mod-php5 php5-cli git && \
+	useradd git && \
+	usermod -a -G git www-data && \
 	a2enmod rewrite && \
 	cd tmp && \
 	wget https://s3.amazonaws.com/gitlist/gitlist-0.5.0.tar.gz && \
