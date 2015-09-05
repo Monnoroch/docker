@@ -1,0 +1,21 @@
+git-repos:
+  build: ./git
+  volumes:
+   - /home/git/repositories
+  command: /bin/true
+  container_name: git-repos
+
+git:
+  build: ./gitosis
+  volumes_from:
+   - git-repos
+  container_name: gitosis
+  ports:
+   - "22"
+
+gitlist:
+  build: ./gitlist
+  volumes_from:
+   - git-repos
+  ports:
+   - "80"
