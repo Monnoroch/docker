@@ -1,6 +1,7 @@
 FROM monnoroch/git
 COPY id_rsa.pub /tmp/
-RUN apt-get update && \
+RUN \
+	apt-get update && \
 	apt-get install -y python-setuptools && \
 	cd tmp && \
 	git clone https://github.com/tv42/gitosis.git && \
