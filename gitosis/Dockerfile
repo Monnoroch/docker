@@ -13,3 +13,5 @@ RUN \
 	chmod -R 774 /home/git/repositories && \
 	chmod 755 /home/git/repositories/gitosis-admin.git/hooks/post-update && \
 	rm -rf /tmp/*
+
+CMD /bin/su - git -c "export GIT_DIR=/home/git/repositories/gitosis-admin.git/; /home/git/repositories/gitosis-admin.git/hooks/post-update" && /usr/sbin/sshd -D
